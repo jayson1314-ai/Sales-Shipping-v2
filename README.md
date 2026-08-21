@@ -26,23 +26,12 @@ Every future push to `main` auto-redeploys.
 
 ## Updating the item database
 
-`index.html` ships with a baked-in JSON snapshot of item data (carton qty,
-weight, dimensions, brand, OE No.), and it is **not** live-linked to
-Murho/INVENTORY. Two ways to refresh it:
-
-**Self-service (no need to come back to Claude):** open the deployed site,
-use the **Item Database** card at the top, and upload the EMAS Pick List
-workbook (or just the updated Table145 / Mesurement / Item Reference List /
-OE Reference tabs) — it's parsed right in the browser with SheetJS and saved
-to that browser's local storage. New/changed P/Ns override the baked-in
-snapshot; anything not in the upload keeps its original value. This only
-persists on the device/browser that did the upload — repeat it on each
-device your team uses, or re-upload after clearing browser data. "Revert to
-Original Snapshot" clears the override and reloads the file's baked-in data.
-
-**Baked into the file:** ask Claude to regenerate `index.html` from an
-updated workbook, then commit and push — this updates the snapshot for
-everyone by default, with no per-browser upload needed.
+`index.html` contains a static JSON snapshot of item data (carton qty,
+weight, dimensions, brand, OE No.) pulled from the EMAS Pick List workbook
+(Table145, Mesurement, Item Reference List, OE Reference tabs). It is
+**not** live-linked to Murho/INVENTORY. Ask Claude to regenerate `index.html`
+whenever new SKUs or dimensions are added to those reference sheets, then
+commit and push the updated file to redeploy.
 
 ## Local preview
 
