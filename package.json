@@ -1,0 +1,10 @@
+{
+  "name": "emas-sales-m3-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone sales-facing M3/weight/pallet calculator for EMAS Warehouse.",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  }
+}
